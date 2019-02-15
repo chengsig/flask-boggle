@@ -19,3 +19,12 @@ def show_board():
     session["board_session"] = board
 
     return render_template("landing.html", board = board)
+
+@app.route("/hello", methods=["POST"])
+def retrieve_guess():
+    """ print the data from AJAX call"""
+
+    import pdb; pdb.set_trace()
+    say_hello = request.form["guess"]
+
+    return say_hello

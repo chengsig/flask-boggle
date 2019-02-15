@@ -19,7 +19,7 @@ class FlaskTests(TestCase):
         result = self.client.get('/')
 
         self.assertEqual(result.status_code, 200)
-        print("client made!")
+        self.assertIn(b"Welcome to the Boggle", result.data)
 
     def test_session(self):
         with self.client:
