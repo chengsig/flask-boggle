@@ -16,4 +16,6 @@ def show_board():
 
     board = boggle_game.make_board()
 
+    session["board_session"] = board
+
     return render_template("landing.html", board = board)
