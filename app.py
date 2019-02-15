@@ -20,10 +20,10 @@ def show_board():
 
     return render_template("landing.html", board = board)
 
-@app.route("/hello", methods=["POST"])
+@app.route("/", methods=["POST"])
 def retrieve_guess():
     """ print the data from AJAX call"""
-
     say_hello = request.form["guess"]
-
+    check_for_word = boggle_game.find(session['board_session'], say_hello)
+    
     return say_hello

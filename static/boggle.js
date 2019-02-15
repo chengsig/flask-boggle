@@ -10,6 +10,6 @@ $(document).ready(function(){
 
         let guessedWord = $guess.val();
 
-        await $.post("/hello", {"guess": guessedWord})
+        await $.post("/", {"guess": guessedWord})
     })
 })
