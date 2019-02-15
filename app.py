@@ -23,7 +23,9 @@ def show_board():
 @app.route("/", methods=["POST"])
 def retrieve_guess():
     """ print the data from AJAX call"""
-    say_hello = request.form["guess"]
-    check_for_word = boggle_game.find(session['board_session'], say_hello)
-    
-    return say_hello
+    input_word = request.form["guess"]
+    check_for_word = boggle_game.check_valid_word(session['board_session'], input_word)
+    print(check_for_word)
+    import pdb; pdb.set_trace()
+
+    return 'post done'
