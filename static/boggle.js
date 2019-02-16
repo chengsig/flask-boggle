@@ -6,6 +6,19 @@ $(document).ready(function(){
     let totalScore = 0;
     let button_state = true;    
 
+    let timeleft = 60;
+    let x = setInterval(function(){
+        if (timeleft > 0){
+            timeleft--;
+            $('#timer').text(`Time left: ${timeleft}`);
+        }
+        else{
+            alert("time up!");
+            button_state = false;
+
+            clearInterval(x);
+        }
+    }, 1000)
 
     // get answer from form, make AJAX call to server
     $makeGuessForm.on("submit", async function(evt){
@@ -26,11 +39,6 @@ $(document).ready(function(){
 
             $guess.val("");
         }
-
-        setTimeout(function(){
-            alert("time up!");
-            button_state = false;
-        }, 8000);
 
     })
 
