@@ -1,6 +1,6 @@
 from boggle import Boggle
 
-from flask import Flask, request, render_template, session
+from flask import Flask, request, render_template, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
@@ -25,7 +25,9 @@ def retrieve_guess():
     """ print the data from AJAX call"""
     input_word = request.form["guess"]
     check_for_word = boggle_game.check_valid_word(session['board_session'], input_word)
-    print(check_for_word)
-    import pdb; pdb.set_trace()
+    # print(check_for_word)
+    # import pdb; pdb.set_trace()
 
-    return 'post done'
+    response_message = {"result": check_for_word}
+
+    return jsonify(response_message)
