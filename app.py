@@ -30,4 +30,18 @@ def retrieve_guess():
 
     response_message = {"result": check_for_word}
 
+
+    return jsonify(response_message)
+
+@app.route("/end", methods=["POST"])
+def retrieve_game_data():
+    """ print the data from AJAX call"""
+
+    end_score = request.form["end_score"]
+    session['high_score'] = max(session['high_score'], end_score)
+    session['time_played'] = 1 + session['timed_playes'] or 1
+
+    response_message = {"result": check_for_word}
+
+
     return jsonify(response_message)

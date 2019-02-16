@@ -7,7 +7,7 @@ $(document).ready(function(){
     let button_state = true;    
 
     let timeleft = 60;
-    let x = setInterval(function(){
+    let x = setInterval(async function(){
         if (timeleft > 0){
             timeleft--;
             $('#timer').text(`Time left: ${timeleft}`);
@@ -15,6 +15,8 @@ $(document).ready(function(){
         else{
             alert("time up!");
             button_state = false;
+
+            await storeGameData();
 
             clearInterval(x);
         }
@@ -41,5 +43,9 @@ $(document).ready(function(){
         }
 
     })
+
+    async function storeGameData(){
+        response = await $.post("/end", {"end_score": totalscore});
+    }
 
 })
